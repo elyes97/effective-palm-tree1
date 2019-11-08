@@ -5,7 +5,8 @@ pipeline {
         stage('Chekout') {
             steps {
         echo 'Building..'        
-	}            
+	}  
+	}
         stage('Build') {
             steps {
                 echo 'Building..'
