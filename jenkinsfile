@@ -1,26 +1,17 @@
-pipeline {
-   agent any
 
+pipeline {
+    agent any
+     
     stages {
-        stage('Chekout') {
+        stage('Ok') {
             steps {
-        echo 'Building..'        
-	}  
-	}
-        stage('Build') {
-            steps {
-                echo 'Building..'
+                echo "Ok"
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
+    }
+    post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
     }
 }
